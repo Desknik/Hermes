@@ -29,7 +29,7 @@
                     <img src="~/images/logo.svg" alt="Logo" style="height:75px;">
                 </div>
                 <div class="dropdown ml-auto">
-                    @if (!string.IsNullOrEmpty(Context.Request.Cookies["Authorization"]))
+                    @if (!string.IsNullOrEmpty(userEmail))
                     {
                         <div class="dropdown">
                             <a class="navbar-brand dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -32,6 +32,8 @@ builder.Services.AddAuthentication(options =>
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(options =>
+
+
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
@@ -61,7 +63,7 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseJwtMiddleware(Encoding.ASCII.GetString(key)); // Use a chave secreta aqui
+app.UseJwtMiddleware(); // Use a chave secreta aqui
  app.UseMiddleware<ClaimsLoggerMiddleware>();
 
 app.MapControllerRoute(

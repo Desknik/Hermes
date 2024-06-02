@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 public class ClaimsLoggerMiddleware
@@ -13,13 +12,15 @@ public class ClaimsLoggerMiddleware
 
     public async Task Invoke(HttpContext context)
     {
-        var userEmail = context.User.FindFirst(ClaimTypes.Name)?.Value;
+        var userEmail = context.Items["Email"] as string;
 
         if (!string.IsNullOrEmpty(userEmail))
         {
             // Aqui você pode adicionar log ou imprimir as claims do usuário
             System.Console.WriteLine($"Usuário logado com email: {userEmail}");
-        }else{
+        }
+        else
+        {
             System.Console.WriteLine("Usuário não está logado");
         }
 

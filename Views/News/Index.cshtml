@@ -1,6 +1,11 @@
 @model IEnumerable<SimpleNewsSystem.Models.NewsItem>
 
 @{
+    var userEmail = Context.Items["Email"] as string;
+    var role = Context.Items["Role"] as string;
+}
+
+@{
     ViewData["Title"] = "Notícias";
 }
 
@@ -70,7 +75,9 @@
 </style>
 
 <h2>Notícias</h2>
-<a asp-action="Create" class="btn btn-primary">Criar nova</a>
+@if (role == "Admin"){
+    <a asp-action="Create" class="btn btn-primary">Criar nova</a>
+}
 
 <div class="cards">
 
@@ -86,10 +93,12 @@
                         <h2>@item.title</h2>
                         <p>@item.description</p>
                     </div>
-                    <div class="actions">
-                        <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-out-primary">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-danger">Delete</a>
-                    </div>
+                    @if (role == "Admin"){
+                        <div class="actions">
+                            <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-out-primary">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-danger">Delete</a>
+                        </div>
+                    }
                 </div>
             </div>
         }

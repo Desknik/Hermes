@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using SimpleNewsSystem.Filters;
 
 namespace SimpleNewsSystem.Controllers
 {
@@ -32,12 +33,14 @@ namespace SimpleNewsSystem.Controllers
         }
 
         [HttpGet]
+        [TypeFilter(typeof(AuthorizationFilter))]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [TypeFilter(typeof(AuthorizationFilter))]
         public IActionResult Register(User user)
         {
             if (ModelState.IsValid)
@@ -60,56 +63,66 @@ namespace SimpleNewsSystem.Controllers
         }
 
         [HttpGet]
+        [TypeFilter(typeof(AuthorizationFilter))]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [TypeFilter(typeof(AuthorizationFilter))]
         public IActionResult Login(User user)
-    {
-        var hashedPassword = EncryptPassword(user.password);
-        var existingUser = _context.Users.FirstOrDefault(u => u.email == user.email && u.password == hashedPassword);
-
-        if (existingUser != null)
         {
-            var claims = new List<Claim>
+            var hashedPassword = EncryptPassword(user.password);
+            var existingUser = _context.Users.FirstOrDefault(u => u.email == user.email && u.password == hashedPassword);
+
+            if (existingUser != null)
             {
-                new Claim(ClaimTypes.Name, user.email),
-                new Claim(ClaimTypes.Role, existingUser.is_admin ? "Admin" : "User")
-            };
+                var claims = new List<Claim>
+                {
+                    // Adiciona a reivindicação de email se o usuário existir
+                    new Claim(ClaimTypes.Name, user.email),
+                    new Claim(ClaimTypes.Role, existingUser.is_admin ? "Admin" : "User")
+                };
 
-            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtKey));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                // Verifica se o email do usuário não é nulo ou vazio antes de adicionar a reivindicação
+                if (!string.IsNullOrEmpty(user.email))
+                {
+                    claims.Add(new Claim(ClaimTypes.Email, user.email));
+                }
 
-            var tokenDescriptor = new SecurityTokenDescriptor
+                var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtKey));
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(claims),
+                    Expires = DateTime.UtcNow.AddHours(1),
+                    Issuer = _jwtIssuer,
+                    Audience = _jwtAudience,
+                    SigningCredentials = creds
+                };
+
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                var tokenString = tokenHandler.WriteToken(token);
+
+                Response.Cookies.Append("Authorization", tokenString, new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.Strict
+                });
+
+                return RedirectToAction("Index", "Home");
+            }
+            else
             {
-                Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddHours(1),
-                Issuer = _jwtIssuer,
-                Audience = _jwtAudience,
-                SigningCredentials = creds
-            };
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var tokenString = tokenHandler.WriteToken(token);
-
-            Response.Cookies.Append("Authorization", tokenString, new CookieOptions
-            {
-                HttpOnly = true,
-                Secure = true,
-                SameSite = SameSiteMode.Strict
-            });
-
-            return RedirectToAction("Index", "Home");
+                ModelState.AddModelError("", "Credenciais inválidas.");
+                return View(user);
+            }
         }
-        else
-        {
-            ModelState.AddModelError("", "Credenciais inválidas.");
-            return View(user);
-        }
-    }
+
 
         private string EncryptPassword(string password)
         {

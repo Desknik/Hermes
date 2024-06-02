@@ -40,11 +40,13 @@
             @foreach (var item in Model)
             {
                 <div class="card" style="width: 18rem;">
-                    <img src="@item.image_url" class="card-img-top" alt="@item.title">
-                    <div class="card-body">
-                        <h5 class="card-title" style="font-size: 18px;">@item.title</h5>
-                        <p class="card-text">@item.description</p>
-                    </div>
+                    <a href="@Url.Action("Index", "News")" class="text-black text-decoration-none">
+                        <img src="@item.image_url" class="card-img-top" alt="@item.title">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-size: 18px;">@item.title</h5>
+                            <p class="card-text">@item.description</p>
+                        </div>
+                    </a>
                 </div>
             }
         </div>

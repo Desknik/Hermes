@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -13,12 +14,12 @@ namespace SimpleNewsSystem.Middleware
     public class JwtMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly string _secretKey;
+        private readonly IConfiguration _configuration;
 
-        public JwtMiddleware(RequestDelegate next, string secretKey)
+        public JwtMiddleware(RequestDelegate next, IConfiguration configuration)
         {
             _next = next;
-            _secretKey = secretKey;
+            _configuration = configuration;
         }
 
         public async Task Invoke(HttpContext context)
@@ -27,18 +28,27 @@ namespace SimpleNewsSystem.Middleware
 
             if (token != null)
             {
-                AttachUserToContext(context, token);
+                var secretKey = _configuration.GetValue<string>("Jwt:Key");
+                var issuer = _configuration.GetValue<string>("Jwt:Issuer");
+                var audience = _configuration.GetValue<string>("Jwt:Audience");
+
+                AttachUserToContext(context, token, secretKey ?? throw new ArgumentNullException(nameof(secretKey)));
+
+            }
+            else
+            {
+                Console.WriteLine("Token não encontrado na requisição.");
             }
 
             await _next(context);
         }
 
-        private void AttachUserToContext(HttpContext context, string token)
+        private void AttachUserToContext(HttpContext context, string token, string secretKey)
         {
             try
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes(_secretKey);
+                var key = Encoding.ASCII.GetBytes(secretKey);
 
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
@@ -50,23 +60,42 @@ namespace SimpleNewsSystem.Middleware
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
-                var email = jwtToken.Claims.First(x => x.Type == ClaimTypes.Name).Value;
+                 var email = jwtToken.Claims.FirstOrDefault(x => x.Type == "email")?.Value;
+                 var role = jwtToken.Claims.FirstOrDefault(x => x.Type == "role")?.Value;
 
-                // Adicione o email do usuário ao contexto da requisição
-                context.Items["Email"] = email;
+                if (!string.IsNullOrEmpty(email))
+                {
+                    // Adicione o email do usuário ao contexto da requisição
+                    context.Items["Email"] = email;
+                }
+                else
+                {
+                    Console.WriteLine("O token JWT não contém uma reivindicação de email.");
+                }
+
+                 if (!string.IsNullOrEmpty(role))
+                {
+                    // Adicione a role do usuário ao contexto da requisição
+                    context.Items["Role"] = role;
+                }
+                else
+                {
+                    Console.WriteLine("O token JWT não contém uma reivindicação de role.");
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                // Se a validação do token falhar, não faça nada
+                Console.WriteLine("Erro ao validar o token JWT: " + ex.Message);
             }
         }
+
     }
 
     public static class JwtMiddlewareExtensions
     {
-        public static IApplicationBuilder UseJwtMiddleware(this IApplicationBuilder builder, string secretKey)
+        public static IApplicationBuilder UseJwtMiddleware(this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<JwtMiddleware>(secretKey);
+            return builder.UseMiddleware<JwtMiddleware>();
         }
     }
 }

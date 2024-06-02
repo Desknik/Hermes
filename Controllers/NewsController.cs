@@ -100,7 +100,7 @@ namespace SimpleNewsSystem.Controllers
                 _context.NewsItems.Remove(newsItem);
                 _context.SaveChanges();
             }
-            return RedirectToAction(nameof(Index));
+            return View(newsItem);
         }
     }
 }
