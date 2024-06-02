@@ -123,6 +123,16 @@ namespace SimpleNewsSystem.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            // Remove o cookie de autorização
+            Response.Cookies.Delete("Authorization");
+
+            // Redireciona o usuário para a página de login
+            return RedirectToAction("Login");
+        }
+
 
         private string EncryptPassword(string password)
         {

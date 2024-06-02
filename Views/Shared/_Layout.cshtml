@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Vermes</title>
+    <title>@ViewData["Title"] - Hermes</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SimpleNewsSystem.styles.css" asp-append-version="true" />
@@ -28,15 +28,15 @@
                 <div class="navbar-brand m-auto">
                     <img src="~/images/logo.svg" alt="Logo" style="height:75px;">
                 </div>
-                <div class="dropdown ml-auto">
+                <div class="ml-auto">
                     @if (!string.IsNullOrEmpty(userEmail))
                     {
                         <div class="dropdown">
-                            <a class="navbar-brand dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="navbar-brand dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="fs-6">@userEmail</span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" id="logoutButton">Sair</a>
+                                <a class="dropdown-item" id="logoutButton" asp-area="" asp-controller="User" asp-action="Logout">Sair</a>
                             </div>
                         </div>
                     }
