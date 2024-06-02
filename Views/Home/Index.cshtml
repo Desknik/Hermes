@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SimpleNewsSystem.Models.NewsItem>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .home-cards{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        align-items: start;
+        gap: 12px;
+    }
+</style>
+
+
+
+<div class="text-center">
+
+    @if (Model.Any())
+    {
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach (var item in Model)
+                {
+                     <div class="carousel-item @(item == Model.First() ? "active" : "")" style="border-radius: 12px;">
+                        <a href="@Url.Action("Index", "News")" class="d-block w-100 h-100 text-white text-decoration-none">
+                            <img src="@item.image_url" class="d-block w-100 card-img-top" style="width: 100%; max-height: 450px; object-fit: cover;" alt="@item.title">
+                            <div class="carousel-caption d-none d-md-block" style="background-color: rgba(30, 30, 30, 0.448);margin-bottom: -12px; border-radius:12px;">
+                                <h5>@item.title</h5>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="home-cards mt-5">
+            @foreach (var item in Model)
+            {
+                <div class="card" style="width: 18rem;">
+                    <img src="@item.image_url" class="card-img-top" alt="@item.title">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size: 18px;">@item.title</h5>
+                        <p class="card-text">@item.description</p>
+                    </div>
+                </div>
+            }
+        </div>
+        
+    }
+    else
+    {
+        <p>Sem notícias recentes</p>
+    }
+</div>

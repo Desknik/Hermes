@@ -1,0 +1,35 @@
+@model SimpleNewsSystem.Models.NewsItem
+
+<h2>Deletar Notícias</h2>
+
+
+<div class="mt-4">
+    <h3>Tem certeza de que deseja excluir essa notícia?</h3>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Título
+        </dt>
+        <dd class="col-sm-10">
+            @Model.title
+        </dd>
+        <dt class="col-sm-2">
+            Descrição
+        </dt>
+        <dd class="col-sm-10">
+            @Model.description
+        </dd>
+        <dt class="col-sm-2">
+            Imagem
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Model.image_url" alt="Image" width="100" />
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" asp-for="id" />
+        <button type="submit" class="btn btn-danger">Deletar</button>
+        <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+    </form>
+</div>

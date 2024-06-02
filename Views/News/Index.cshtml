@@ -1,0 +1,100 @@
+@model IEnumerable<SimpleNewsSystem.Models.NewsItem>
+
+@{
+    ViewData["Title"] = "Notícias";
+}
+
+<style>
+    .card{
+        display:flex;
+        flex-direction: row;
+        justify-content: start;
+        justify-items: start;
+        gap: 12px;
+        padding: 12px;
+        background-color: #ffffff;
+        box-shadow: 0 6px 10px #85858522;
+        border-radius: 12px;
+        margin-top: 12px;
+    }
+
+    .card-image{
+        display: flex;
+        justify-content: center;
+        width: 200px;
+        height: 200px;
+    }
+
+    .card-details{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: start;
+        padding: 12px;
+    }
+
+    .card-details .details{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+    }
+
+    .card-details .actions{
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        gap: 3px;   
+    }
+
+    .card-details h2{
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .card-details p{
+        font-size: 16px;
+    }
+
+    .btn-out-primary{
+        background-color: #fff; 
+        color: #0b5ed7; 
+        border: solid 1px
+    }
+
+    .btn-out-primary:hover{
+        background-color: #cccccc97
+        color: #0b5ed7; 
+        border: solid 1px
+    }
+</style>
+
+<h2>Notícias</h2>
+<a asp-action="Create" class="btn btn-primary">Criar nova</a>
+
+<div class="cards">
+
+    @if(Model.Count() > 0){
+        foreach (var item in Model)
+        {
+            <div class="card">
+                <div class="card-image">
+                    <img src="@item.image_url" alt="Image" width="100" style="width: 100%;"/>
+                </div>
+                <div class="card-details">
+                    <div class="details">
+                        <h2>@item.title</h2>
+                        <p>@item.description</p>
+                    </div>
+                    <div class="actions">
+                        <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-out-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }else{
+        <p>Sem items na lista</p>
+    }
+    
+</div>
