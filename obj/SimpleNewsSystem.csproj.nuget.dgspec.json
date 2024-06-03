@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arthu\\Desktop\\ALL FILES\\Hermes\\SimpleNewsSystem.csproj": {}
+    "C:\\Projects\\Se Sharp\\SimpleNewsSystem\\SimpleNewsSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arthu\\Desktop\\ALL FILES\\Hermes\\SimpleNewsSystem.csproj": {
+    "C:\\Projects\\Se Sharp\\SimpleNewsSystem\\SimpleNewsSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arthu\\Desktop\\ALL FILES\\Hermes\\SimpleNewsSystem.csproj",
+        "projectUniqueName": "C:\\Projects\\Se Sharp\\SimpleNewsSystem\\SimpleNewsSystem.csproj",
         "projectName": "SimpleNewsSystem",
-        "projectPath": "C:\\Users\\arthu\\Desktop\\ALL FILES\\Hermes\\SimpleNewsSystem.csproj",
-        "packagesPath": "C:\\Users\\arthu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arthu\\Desktop\\ALL FILES\\Hermes\\obj\\",
+        "projectPath": "C:\\Projects\\Se Sharp\\SimpleNewsSystem\\SimpleNewsSystem.csproj",
+        "packagesPath": "C:\\Users\\deskn\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Se Sharp\\SimpleNewsSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\arthu\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\deskn\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -79,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
