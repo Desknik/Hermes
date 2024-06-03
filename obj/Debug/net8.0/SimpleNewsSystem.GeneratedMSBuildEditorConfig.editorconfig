@@ -9,63 +9,63 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SimpleNewsSystem
 build_property.RootNamespace = SimpleNewsSystem
-build_property.ProjectDir = C:\Projects\Se Sharp\SimpleNewsSystem\
+build_property.ProjectDir = C:\Users\arthu\Desktop\ALL FILES\Hermes\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Projects\Se Sharp\SimpleNewsSystem
+build_property.MSBuildProjectDirectory = C:\Users\arthu\Desktop\ALL FILES\Hermes
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Projects/Se Sharp/SimpleNewsSystem/Views/Home/Index.cshtml]
+[C:/Users/arthu/Desktop/ALL FILES/Hermes/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Se Sharp/SimpleNewsSystem/Views/Home/Privacy.cshtml]
+[C:/Users/arthu/Desktop/ALL FILES/Hermes/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Se Sharp/SimpleNewsSystem/Views/News/Create.cshtml]
+[C:/Users/arthu/Desktop/ALL FILES/Hermes/Views/News/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Se Sharp/SimpleNewsSystem/Views/News/Delete.cshtml]
+[C:/Users/arthu/Desktop/ALL FILES/Hermes/Views/News/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Se Sharp/SimpleNewsSystem/Views/News/Edit.cshtml]
+[C:/Users/arthu/Desktop/ALL FILES/Hermes/Views/News/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Se Sharp/SimpleNewsSystem/Views/News/Index.cshtml]
+[C:/Users/arthu/Desktop/ALL FILES/Hermes/Views/News/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Se Sharp/SimpleNewsSystem/Views/Shared/Error.cshtml]
+[C:/Users/arthu/Desktop/ALL FILES/Hermes/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Se Sharp/SimpleNewsSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/arthu/Desktop/ALL FILES/Hermes/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Se Sharp/SimpleNewsSystem/Views/User/Login.cshtml]
+[C:/Users/arthu/Desktop/ALL FILES/Hermes/Views/User/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Se Sharp/SimpleNewsSystem/Views/User/Register.cshtml]
+[C:/Users/arthu/Desktop/ALL FILES/Hermes/Views/User/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Se Sharp/SimpleNewsSystem/Views/_ViewImports.cshtml]
+[C:/Users/arthu/Desktop/ALL FILES/Hermes/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Se Sharp/SimpleNewsSystem/Views/_ViewStart.cshtml]
+[C:/Users/arthu/Desktop/ALL FILES/Hermes/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Se Sharp/SimpleNewsSystem/Views/Shared/_Layout.cshtml]
+[C:/Users/arthu/Desktop/ALL FILES/Hermes/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-qh1x2jas4d

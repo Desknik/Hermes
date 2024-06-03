@@ -88,19 +88,19 @@ namespace SimpleNewsSystem.Controllers
             return View(newsItem);
         }
 
-        // POST: News/Delete/5
-        [TypeFilter(typeof(AdminAuthorizationFilter))]
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var newsItem = _context.NewsItems.Find(id);
+            var newsItem = await _context.NewsItems.FindAsync(id);
             if (newsItem != null)
             {
                 _context.NewsItems.Remove(newsItem);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
-            return View(newsItem);
+            return RedirectToAction(nameof(Index));
         }
+        
+        
     }
 }

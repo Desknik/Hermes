@@ -36,10 +36,10 @@
                 }
             </div>
         </div>
-        <div class="home-cards mt-5">
+        <div class="home-cards mt-5 mb-5">
             @foreach (var item in Model)
             {
-                <div class="card" style="width: 18rem;">
+                <div class="card mb-5" style="width: 18rem;">
                     <a href="@Url.Action("Index", "News")" class="text-black text-decoration-none">
                         <img src="@item.image_url" class="card-img-top" alt="@item.title">
                         <div class="card-body">
