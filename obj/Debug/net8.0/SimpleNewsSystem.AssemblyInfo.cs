@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SimpleNewsSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e62f5434f2525a71fccefd2380a321e78506c38")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c09fe7687a14f1aa2d007e328b787cba46803e71")]
 [assembly: System.Reflection.AssemblyProductAttribute("SimpleNewsSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SimpleNewsSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
